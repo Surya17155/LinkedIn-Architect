@@ -1,0 +1,5 @@
+{
+  "name": "LinkedIn Post Architect",
+  "description": "A professional LinkedIn post editor with real-time preview, unicode formatting (bold, italic), and Gemini AI content enhancement.",
+  "requestFramePermissions": []
+}
