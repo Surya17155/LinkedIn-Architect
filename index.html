@@ -27,14 +27,12 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
       }
-
-      /* Custom Button CSS */
+    /* Custom Button CSS */
       .button-custom {
         --primary: #ff5569;
         --neutral-1: #f7f8f7;
         --neutral-2: #e7e7e7;
-        --radius: 12px; /* Slightly smaller radius */
-
+        --radius: 12px;
         cursor: pointer;
         border-radius: var(--radius);
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -46,12 +44,12 @@
         justify-content: center;
         position: relative;
         transition: all 0.3s ease;
-        min-width: 160px; /* Reduced to medium */
+        min-width: 160px;
         padding: 10px 20px;
-        height: 56px; /* Reduced height */
+        height: 56px;
         font-family: "Galano Grotesque", "Inter", sans-serif;
         font-style: normal;
-        font-size: 16px; /* Reduced font size */
+        font-size: 16px;
         font-weight: 600;
         color: #000;
       }
@@ -111,8 +109,6 @@
       .state .icon svg {
         overflow: visible;
       }
-
-      /* Outline */
       .outline {
         position: absolute;
         border-radius: inherit;
@@ -136,12 +132,8 @@
         animation-play-state: paused;
       }
       @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
       .button-custom:hover .outline {
         opacity: 1;
@@ -149,8 +141,6 @@
       .button-custom:hover .outline::before {
         animation-play-state: running;
       }
-
-      /* Letters */
       .state p span {
         display: block;
         opacity: 0;
@@ -165,54 +155,16 @@
         animation: disapear 0.6s ease forwards calc(var(--i) * 0.03s);
       }
       @keyframes wave {
-        30% {
-          opacity: 1;
-          transform: translateY(4px) translateX(0) rotate(0);
-        }
-        50% {
-          opacity: 1;
-          transform: translateY(-3px) translateX(0) rotate(0);
-          color: var(--primary);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) translateX(0) rotate(0);
-        }
+        30% { opacity: 1; transform: translateY(4px) translateX(0) rotate(0); }
+        50% { opacity: 1; transform: translateY(-3px) translateX(0) rotate(0); color: var(--primary); }
+        100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); }
       }
       @keyframes slideDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px) translateX(5px) rotate(-90deg);
-          color: var(--primary);
-          filter: blur(5px);
-        }
-        30% {
-          opacity: 1;
-          transform: translateY(4px) translateX(0) rotate(0);
-          filter: blur(0);
-        }
-        50% {
-          opacity: 1;
-          transform: translateY(-3px) translateX(0) rotate(0);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) translateX(0) rotate(0);
-        }
+        0% { opacity: 0; transform: translateY(-20px) translateX(5px) rotate(-90deg); color: var(--primary); filter: blur(5px); }
       }
-      @keyframes disapear {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
-          transform: translateX(5px) translateY(20px);
-          color: var(--primary);
-          filter: blur(5px);
-        }
+      .icon svg {
+        overflow: visible;
       }
-
-      /* Plane */
       .state--default .icon svg {
         animation: land 0.6s ease forwards;
       }
@@ -226,32 +178,14 @@
         transform: rotate(0) scale(1.1);
       }
       @keyframes takeOff {
-        0% {
-          opacity: 1;
-        }
-        60% {
-          opacity: 1;
-          transform: translateX(70px) rotate(45deg) scale(2);
-        }
-        100% {
-          opacity: 0;
-          transform: translateX(160px) rotate(45deg) scale(0);
-        }
+        0% { opacity: 1; }
+        60% { opacity: 1; transform: translateX(70px) rotate(45deg) scale(2); }
+        100% { opacity: 0; transform: translateX(160px) rotate(45deg) scale(0); }
       }
       @keyframes land {
-        0% {
-          transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
-          opacity: 0;
-          filter: blur(3px);
-        }
-        100% {
-          transform: translateX(0) translateY(0) rotate(0);
-          opacity: 1;
-          filter: blur(0);
-        }
+        0% { transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2); opacity: 0; filter: blur(3px); }
+        100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
       }
-
-      /* Contrail */
       .state--default .icon:before {
         content: "";
         position: absolute;
@@ -265,24 +199,11 @@
         animation: contrail 0.8s linear forwards;
       }
       @keyframes contrail {
-        0% {
-          width: 0;
-          opacity: 1;
-        }
-        8% {
-          width: 15px;
-        }
-        60% {
-          opacity: 0.7;
-          width: 80px;
-        }
-        100% {
-          opacity: 0;
-          width: 160px;
-        }
+        0% { width: 0; opacity: 1; }
+        8% { width: 15px; }
+        60% { opacity: 0.7; width: 80px; }
+        100% { opacity: 0; width: 160px; }
       }
-
-      /* States */
       .state {
         padding-left: 29px;
         z-index: 2;
@@ -302,36 +223,6 @@
       .button-custom:focus .state--sent {
         display: flex;
       }
-      .button-custom:focus .state--sent span {
-        opacity: 0;
-        animation: slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
-      }
-      .button-custom:focus .state--sent .icon svg {
-        opacity: 0;
-        animation: appear 1.2s ease forwards 0.8s;
-      }
-      @keyframes appear {
-        0% {
-          opacity: 0;
-          transform: scale(4) rotate(-40deg);
-          color: var(--primary);
-          filter: blur(4px);
-        }
-        30% {
-          opacity: 1;
-          transform: scale(0.6);
-          filter: blur(1px);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.2);
-          filter: blur(0);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
     </style>
   <script type="importmap">
 {
@@ -340,12 +231,13 @@
     "react": "https://aistudiocdn.com/react@^19.2.1",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+    "lucide-react": "https://aistudiocdn.com/lucide-react@R0.556.0"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

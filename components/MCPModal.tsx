@@ -64,11 +64,10 @@ curl -X POST "${MCP_SERVER_URL}" \\
       setTimeout(() => setCopied(false), 2000);
     }
   };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h[90vh] overflow-y-auto z-10">
         <div className="sticky top-0 bg-white border-b border-gray-100 rounded-t-2xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
@@ -110,5 +109,4 @@ curl -X POST "${MCP_SERVER_URL}" \\
     </div>
   );
 };
-
 export default MCPConfigModal;
