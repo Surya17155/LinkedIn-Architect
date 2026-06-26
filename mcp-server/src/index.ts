@@ -17,6 +17,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+
 const mcpServer = new Server(
   { name: 'linkedin-architect-mcp', version: '1.0.0' },
   { capabilities: { tools: {} } }
@@ -66,7 +68,7 @@ const TOOL_DEFS = [
       properties: { text: { type: 'string', description: 'Text to underline' } },
       required: ['text']
     }
-  y,
+  },
   {
     name: 'normalize_text',
     description: 'Convert styled Unicode text back to plain ASCII text.',
@@ -157,8 +159,22 @@ mcpServer.setRequestHandler(CallToolRequestSchema, async (request) => {
 const transport = new StreamableHTTPServerTransport({
   sessionIdGenerator: () => crypto.randomUUID(),
 });
-wait mcpServer.connect(transport);
 
-app.post('/mcp', (req, res) => {
+async function start() {
+  await mcpServer.connect(transport);
+}
+
+start();
+
+app.post('/mcp', (req, res, next) => {
   transport.handleRequest(req, res, req.body);
+});
+
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001;
+app.listen(PORT, () => {
+  console.log(`MCP server running on port ${PORT}`);
 });
